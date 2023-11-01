@@ -6,12 +6,12 @@ const opts: RouterOpts = {
 	"scrollToTop": false
 }
 
-//const publicUrl = process.env["PUBLIC_URL"];
+const publicUrl = process.env["PUBLIC_URL"];
 
 
 export const routeDefs = {
-	"home": defineRoute("/"),
-	"page1": defineRoute("/page1")
+	"home": defineRoute(publicUrl || "/"),
+	"page1": defineRoute(publicUrl + "/page1")
 };
 
 
