@@ -14,6 +14,9 @@ export function createGithubPagesDeployCi() {
     branches:
       - ${branchName}
 
+permissions:
+  contents: write
+
 jobs:
 
   deploy_on_gh_pages:
