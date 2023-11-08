@@ -6,7 +6,7 @@ const opts: RouterOpts = {
 	"scrollToTop": false
 }
 
-const publicUrl = process.env["PUBLIC_URL"];
+const publicUrl = __BASE_URL__;
 
 
 export const routeDefs = {
