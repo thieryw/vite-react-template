@@ -9,7 +9,8 @@ export function createGithubPagesDeployCi() {
 	mkdirSync(path, {"recursive": true });
 
 	writeFileSync(join(path, "deploy.yml"), 
-`on:
+`
+on:
   push:
     branches:
       - ${branchName}
@@ -26,11 +27,13 @@ jobs:
     - uses: actions/setup-node@v2.1.3
       with:
         node-version: '16'
-    - uses: bahmutov/npm-install@v1
-    - run: yarn build
+    - run: |
+        yarn install --frozen-lockfile
+        yarn build
     - run: git remote set-url origin https://git:\${GITHUB_TOKEN}@github.com/\${{github.repository}}.git
       env:
         GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
-    - run: npx -y -p gh-pages@3.1.0 gh-pages -d dist --add -u "github-actions-bot <actions@github.com>"`)
+    - run: npx -y -p gh-pages@3.1.0 gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
+`)
 
 };
